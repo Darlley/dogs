@@ -1,3 +1,4 @@
+import { getCurso } from '@/api/cursos';
 import Link from 'next/link';
 import React from 'react';
 
@@ -7,31 +8,12 @@ interface InterfaceSlug {
   }
 }
 
-type CursoType = {
-  id: string;
-  slug: string;
-  nome: string;
-  descricao: string;
-  total_aulas: number;
-  total_horas: number;
-  aulas: [
-    {
-      id: number;
-      slug: string;
-      nome: string;
-      descricao: string;
-      curso_id: number;
-      tempo: number;
-      ordem: number;
-    }
-  ]
-}
+
 
 export default async function CursoPage({params}: InterfaceSlug) {
   const paramCurso = params.curso;
 
-  const response = await fetch(`https://api.origamid.online/cursos/${paramCurso}`)
-  const curso = await response.json() as CursoType;
+  const curso = await getCurso(paramCurso)
 
   return (
     <div>
