@@ -1,4 +1,4 @@
-import Acesso from "@/components/acesso";
+import Acesso from '@/components/acesso';
 
 export default async function HomePage() {
   return (
